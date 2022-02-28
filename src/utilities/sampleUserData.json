@@ -1,0 +1,53 @@
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#directoryObjects",
+    "value": [
+        {
+            "@odata.type": "#microsoft.graph.user",
+            "id": "CCC8a7b9-af7a-42d6-b280-6829110439ce",
+            "businessPhones": [
+                "+32-2-386 5001"
+            ],
+            "displayName": "Peter Pan",
+            "givenName": "PeterPAn",
+            "jobTitle": "A Marketing guy",
+            "mail": "peter.pan@peter.com",
+            "mobilePhone": "+32 4453534532",
+            "officeLocation": "ABC 55",
+            "preferredLanguage": null,
+            "surname": "Pan",
+            "userPrincipalName": "peter.pan@peter.com"
+        },
+        {
+            "@odata.type": "#microsoft.graph.user",
+            "id": "CCC8a7b9-af7a-42d6-b280-6829110439ce",
+            "businessPhones": [
+                "+32-2-333 8888"
+            ],
+            "displayName": "John Snow",
+            "givenName": "John Snow",
+            "jobTitle": "A Finance guy",
+            "mail": "John.snow@peter.com",
+            "mobilePhone": "+32 4453534532",
+            "officeLocation": "ABC 55",
+            "preferredLanguage": null,
+            "surname": "John",
+            "userPrincipalName": "John.snow@peter.com"
+        },
+        {
+            "@odata.type": "#microsoft.graph.user",
+            "id": "CCC8a7b9-af7a-42d6-b280-6829110439ce",
+            "businessPhones": [
+                "+32-2-333 8888"
+            ],
+            "displayName": "Dan Zion",
+            "givenName": "DanZion",
+            "jobTitle": "A Sales guy",
+            "mail": "Dan.Zion@peter.com",
+            "mobilePhone": "+32 4453534532",
+            "officeLocation": "ABC 55",
+            "preferredLanguage": null,
+            "surname": "Dan",
+            "userPrincipalName": "Dan.Zion@peter.com"
+        }
+     ]
+}

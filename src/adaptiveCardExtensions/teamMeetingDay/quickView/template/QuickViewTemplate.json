@@ -1,0 +1,39 @@
+{
+  "schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.2",
+  "body": [
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "text": "${title}"
+    },
+    {
+      "separator": true,
+      "type": "ColumnSet",
+      "$data": "${peoples}",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "${displayName}"
+            }            
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "${schedule.monday}"
+            }            
+          ],
+          "width": "auto"
+        }
+      ]
+    }
+  ]
+}

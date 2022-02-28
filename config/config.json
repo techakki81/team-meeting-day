@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "team-meeting-day-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/teamMeetingDay/TeamMeetingDayAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/teamMeetingDay/TeamMeetingDayAdaptiveCardExtension.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TeamMeetingDayAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/teamMeetingDay/loc/{locale}.js"
+  }
+}

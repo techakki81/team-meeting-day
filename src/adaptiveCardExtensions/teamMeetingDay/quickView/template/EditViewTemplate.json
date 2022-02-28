@@ -1,0 +1,83 @@
+{
+  "schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.2",
+  "body": [
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "text": "${title}"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Input.Toggle",              
+              "title": "Monday ",
+              "value": "${togMon}",
+              "spacing": "Default",
+              "wrap": true,
+              "separator": true,
+              "id":"togMon",
+              "valueOn":"true",
+              "valueOff":"false"
+          },
+          {
+            "type": "Input.Toggle",              
+            "title": "Tuesday",
+            "value": "${togTue}",
+            "spacing": "Default",
+            "wrap": true,
+            "separator": true,
+            "id":"togTue",
+            "valueOn":"true",
+            "valueOff":"false"
+          },
+          {
+            "type": "Input.Toggle",              
+            "title": "Wednesday",
+            "value": "${togWed}",
+            "spacing": "Default",
+            "wrap": true,
+            "separator": true,
+            "id":"togWed",
+            "valueOn":"true",
+            "valueOff":"false"
+        },
+          {
+            "type": "Input.Toggle",              
+            "title": "Thursday ",
+            "value": "${togThu}",
+            "spacing": "Default",
+            "wrap": true,
+            "separator": true,
+            "id":"togThu",
+            "valueOn":"true",
+            "valueOff":"false"
+        },
+        {
+          "type": "Input.Toggle",              
+          "title": "Friday",
+          "value": "${togFri}",
+          "spacing": "Default",
+          "wrap": true,
+          "separator": true,
+          "id":"togFri",
+          "valueOn":"true",
+          "valueOff":"false"
+        }
+          ]
+        }          
+      ]
+    }    
+  ],
+  "actions":[
+    {
+      "type": "Action.Submit",
+      "title": "OK"
+    }
+  ]   
+}
