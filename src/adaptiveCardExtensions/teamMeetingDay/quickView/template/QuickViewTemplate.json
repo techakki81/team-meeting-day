@@ -27,13 +27,78 @@
           "type": "Column",
           "items": [
             {
-              "type":"TextBlock",
-              "text": "${schedule.monday}"
-            }            
-          ],
-          "width": "auto"
-        }
-      ]
+              "type": "Input.Toggle",              
+              "value": "${schedule.monday}",
+              "spacing": "Default",
+              "wrap": true,
+              "separator": true,                            
+              "id":"${concat('togMon', ${email})}",
+              "valueOn":"true",
+              "valueOff":"false"
+          }
+          ]
+        } ,
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Input.Toggle",                            
+              "value": "${schedule.tuesday}",
+              "spacing": "Default",
+              "wrap": true,
+              "separator": true,                            
+              "id":"${concat('togTue', ${email})}",
+              "valueOn":"true",
+              "valueOff":"false"
+          }
+          ]
+        } ,
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Input.Toggle",              
+              "value": "${schedule.wednesday}",
+              "spacing": "Default",
+              "wrap": true,
+              "separator": true,                            
+              "id":"${concat('togWed', ${email})}",
+              "valueOn":"true",
+              "valueOff":"false"
+          }
+          ]
+        } ,
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Input.Toggle",              
+              "value": "${schedule.thursday}",
+              "spacing": "Default",
+              "wrap": true,
+              "separator": true,                            
+              "id":"${concat('togThu', ${email})}",
+              "valueOn":"true",
+              "valueOff":"false"
+          }
+          ]
+        } ,
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Input.Toggle",              
+              "value": "${schedule.friday}",
+              "spacing": "Default",
+              "wrap": true,
+              "separator": true,                            
+              "id":"${concat('togFri', ${email})}",
+              "valueOn":"true",
+              "valueOff":"false"
+          }
+          ]
+        }              
+      ]             
     }
   ]
 }

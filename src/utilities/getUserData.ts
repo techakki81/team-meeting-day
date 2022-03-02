@@ -78,6 +78,7 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
                             schedule: sch
                         }
                     })
+
                     return  await Promise.all(users)
                 }
         else 
@@ -103,7 +104,7 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
           
         }
 
-  export async function getUserSchedule( usrEmail:string,  spList:IList, date?:Date) {   
+  export async function getUserSchedule( usrEmail:string,  spList:IList, date?:Date):Promise<ISchedule> {   
 
     let weekNo:number =  weekNumber( date || new Date())
 

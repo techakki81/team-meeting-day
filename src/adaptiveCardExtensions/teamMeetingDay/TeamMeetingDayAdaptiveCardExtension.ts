@@ -88,7 +88,7 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
 
       }     
 
-      this.setState( {        
+     this.setState( {        
         ...newState,
         user:{
           displayName:this.context.pageContext.user.displayName,

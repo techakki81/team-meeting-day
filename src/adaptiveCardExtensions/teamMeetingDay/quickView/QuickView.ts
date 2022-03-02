@@ -13,8 +13,10 @@ export class QuickView extends BaseAdaptiveCardView<
   IQuickViewData
 > {
   public get data(): IQuickViewData {    
-    console.log(typeof this.state.user.team[0].schedule.monday)
-
+    
+    // talk about toggles needing to have unique id ..
+    // within a loop we need to concat so that within loop a unique id is needed
+   
     return {
       title:strings.YourTeam,
       peoples:this.state.user?.team
