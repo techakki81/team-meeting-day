@@ -3,11 +3,69 @@
   "type": "AdaptiveCard",
   "version": "1.2",
   "body": [
+      
     {
-      "type": "TextBlock",
-      "weight": "Bolder",
-      "text": "${title}"
+      "separator": true,
+      "type": "ColumnSet",      
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "Email"
+            }            
+          ],
+          "width": "80px"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "Mon"
+            }            
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "Tue"
+            }            
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "Wed"
+            }            
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "Thu"
+            }            
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type":"TextBlock",
+              "text": "Fri"
+            }            
+          ]
+        }                      
+      ]             
     },
+
     {
       "separator": true,
       "type": "ColumnSet",
@@ -21,7 +79,7 @@
               "text": "${displayName}"
             }            
           ],
-          "width": "auto"
+          "width": "80px"
         },
         {
           "type": "Column",

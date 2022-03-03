@@ -10,53 +10,6 @@ import "@pnp/sp/items"
 import {ICamlQuery, IList} from "@pnp/sp/lists"
 import { weekNumber } from './weekNumber';
 
-//  export function getUserTeamData(context:AdaptiveCardExtensionContext,spList:IList):Promise<IUser[]> {
-
-//      // if its hosted in local workbench then send the file otherwise make http class
-//      // if its workbench then return the normal user
-//      //otherwise make a call to graph
-
-//       return new Promise<IUser[]>( (resolve,reject) =>
-//       {
-     
-    
-//             if(context.pageContext.site.serverRequestPath.indexOf("/_layouts/workbench.aspx"))
-//             import ('./sampleUserData.json').then( (resp:any) => {
-                
-//                 let users =  resp.value.map( (val:any) =>{
-
-//                     Promise.resolve( getUserSchedule( val.mail, spList)).then( (sch:ISchedule) =>{
-
-//                         console.log(`promise is resolved`)
-//                         console.log(sch)
-//                         return {
-//                         displayName: val.displayName,
-//                         email:val.mail,
-//                         schedule: sch
-//                         }
-//                     })
-//                 })   
-//                 // console.log( users)
-//                 resolve(users)
-//                 })
-//             else 
-//             this.context.msGraphClientFactory.getClient().then((client:MSGraphClient):void=>{
-//                 client.api("/me/directReports")
-//                 .get( (error, response: any,rawResPonse?:any) =>{
-                    
-//                     let users = response.value.map( (val:any) => <IUser> {
-//                         displayName: val.displayName,
-//                         email:val.mail,
-//                         schedule:getUserSchedule( val.mail, spList)
-//                     })
-
-//                 resolve(users)
-//                 })
-//             })        
-//       })
-//     }
-
-
 export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spList:IList): Promise<IUser[]> {
 
          // if its hosted in local workbench then send the file otherwise make http class
@@ -64,7 +17,7 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
          //otherwise make a call to graph
      
         
-        if(context.pageContext.site.serverRequestPath.indexOf("/_layouts/workbench.aspx")) {
+        if(context.pageContext.site.serverRequestPath.indexOf("/_layouts/workbench2.aspx")>0) {
 
                     let resp:any = await import ('./sampleUserData.json')
             
@@ -82,27 +35,24 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
                     return  await Promise.all(users)
                 }
         else 
-        {
-            return null
-        }
+        {            
+             // get it from the contacts of users outlook 
 
-                
-                // else 
-                // this.context.msGraphClientFactory.getClient().then((client:MSGraphClient):void=>{
-                //     client.api("/me/directReports")
-                //     .get( (error, response: any,rawResPonse?:any) =>{
-                        
-                //         let users = response.value.map( (val:any) => <IUser> {
-                //             displayName: val.displayName,
-                //             email:val.mail,
-                //             schedule:getUserSchedule( val.mail, spList)
-                //         })
-    
-                //     resolve(users)
-                //     })
-                // })        
-          
+                let client = await context.msGraphClientFactory.getClient()
+                // TOTALK.. TYpescript
+                let response = await client.api("/me/contacts").get() 
+                let users = await response.value.map( async(val:any) =>{
+                    let sch:any = await getUserSchedule(val.emailAddresses[0].address,spList)
+                    return <IUser>{
+                        displayName: val.displayName,
+                        email:val.emailAddresses[0].address,
+                        schedule: sch
+                    }
+
+                })
+                return  await Promise.all(users)                  
         }
+   }
 
   export async function getUserSchedule( usrEmail:string,  spList:IList, date?:Date):Promise<ISchedule> {   
 
@@ -136,24 +86,3 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
      }     
 
      
-    //  const lstItms =  Promise.resolve(spList.getItemsByCAMLQuery(qry) ).then ( (lstItms:any)=>{
-
-    //     if(lstItms.length>0)
-    //  {
-    //      let o ={
-    //         monday:lstItms[0].Monday,
-    //         tuesday:lstItms[0].Tuesday,
-    //         wednesday:lstItms[0].Wednesday,
-    //         thursday:lstItms[0].Thursday,
-    //         friday:lstItms[0].Friday
-    //     } 
-    //     console.log(o)
-    //     return  o
-     
-    // }
-     
-    //  else
-    //  return null
-
-    //  })     
-    

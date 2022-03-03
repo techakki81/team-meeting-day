@@ -35,18 +35,22 @@ export class CardView extends BasePrimaryTextCardView<ITeamMeetingDayAdaptiveCar
   }
 
   public get data(): IPrimaryTextCardParameters {
+
+    const primaryText = this.state.user.team?.length>0 ?this.state.popularDay:strings.NoColleague;
+    const desc = this.state.user.team?.length>0?  `${this.state.pupularDayCount} ${strings.PeoplesGoing}`;
+
     return {
-      primaryText: this.state.popularDay,
-      description: "10 pople will be present"
+      primaryText: primaryText ,
+      description: desc
     };
   }
 
-  public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
-    return {
-      type: 'ExternalLink',
-      parameters: {
-        target: 'https://www.bing.com'
-      }
-    };
-  }
+  // public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
+  //   return {
+  //     type: 'ExternalLink',
+  //     parameters: {
+  //       target: 'https://www.bing.com'
+  //     }
+  //   };
+  // }
 }

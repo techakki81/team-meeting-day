@@ -29,6 +29,7 @@ export interface ITeamMeetingDayAdaptiveCardExtensionProps {
 
 export interface ITeamMeetingDayAdaptiveCardExtensionState { 
   popularDay?:string;
+  pupularDayCount?:number;
   user?:IUser;
   weekNumber:number;
   spList:IList;
@@ -74,8 +75,7 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
     
     const spLst = sp.web.getList(Constants.ListUrl)
 
-    this.state = {
-      popularDay:"Friday",
+    this.state = {      
       weekNumber : weekNumber( new Date()),
       spList: spLst
     };
@@ -83,13 +83,41 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
 
     getUserTeamData(this.context,spLst).then( (val:IUser[]) =>{
 
-      let newState = {
-        ...this.state,
+      console.log(val)
 
-      }     
+      // loop over the team schedule and get the most popular day and count 
+      let dayCount ={
+        Monday:0,
+        Tuesday:0,
+        Wednesday:0,
+        Thursday:0,
+        Friday:0        
+      }
+
+      val.forEach(  (val:IUser) => {
+        val.schedule?.monday==="true" && dayCount.Monday++
+        val.schedule?.tuesday==="true" && dayCount.Tuesday++ 
+        val.schedule?.wednesday==="true" && dayCount.Wednesday++
+        val.schedule?.thursday==="true" && dayCount.Thursday++
+        val.schedule?.friday==="true" && dayCount.Friday++
+      });
+
+
+      // check which day has largest count 
+
+      //TS prob1
+     // cant user Object.values due to TS issue set he lib to es2017. PROBLME TS
+  
+      let dayName:string="";
+      let countNumber =  Math.max(  ...Object.values(dayCount) )
+    
+
+     Object.keys(dayCount).filter( (val:string) => dayCount[val] === countNumber).forEach( (val)=>dayName+=` ${val}`)
 
      this.setState( {        
-        ...newState,
+      ...this.state,
+        popularDay:dayName,
+        pupularDayCount:countNumber,
         user:{
           displayName:this.context.pageContext.user.displayName,
           email:this.context.pageContext.user.email,
@@ -113,7 +141,7 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
   }
 
   protected get iconProperty(): string {
-    return this.properties.iconProperty || require('./assets/SharePointLogo.svg');
+    return this.properties.iconProperty || require('./assets/SharePointLogo2.png');
   }
 
   protected loadPropertyPaneResources(): Promise<void> {

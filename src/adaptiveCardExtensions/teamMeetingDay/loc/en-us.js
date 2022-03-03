@@ -12,6 +12,10 @@ define([], function() {
     "QuickViewButton": "See Schedule",
     "OpenEditBtn":"Set My days",
     "EditViewTitle":"Select you weekdays",
-     "YourTeam":"Your Team"
+     "YourTeam":"Your Team",
+     "PopularDays":"Popular days:",
+     "PeoplesGoing":" colleagues going",
+     "NoColleague":"No data",
+     "ErrSetUpContact":"Please add your colleagues to outlook contact"
   }
 });

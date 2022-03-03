@@ -13,6 +13,8 @@ declare interface ITeamMeetingDayAdaptiveCardExtensionStrings {
   OpenEditBtn:string;
   EditViewTitle: string;
   YourTeam:string;
+  PeoplesGoing:string;
+  PopularDays:string;
 
 }
 
