@@ -83,7 +83,9 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
 
     getUserTeamData(this.context,spLst).then( (val:IUser[]) =>{
 
-      console.log(val)
+      // return if there is no team
+      if( !val || val.length<=0 )
+        return
 
       // loop over the team schedule and get the most popular day and count 
       let dayCount ={
@@ -94,12 +96,12 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
         Friday:0        
       }
 
-      val.forEach(  (val:IUser) => {
-        val.schedule?.monday==="true" && dayCount.Monday++
-        val.schedule?.tuesday==="true" && dayCount.Tuesday++ 
-        val.schedule?.wednesday==="true" && dayCount.Wednesday++
-        val.schedule?.thursday==="true" && dayCount.Thursday++
-        val.schedule?.friday==="true" && dayCount.Friday++
+      val.forEach(  (usr:IUser) => {
+        usr.schedule?.monday==="true" && dayCount.Monday++
+        usr.schedule?.tuesday==="true" && dayCount.Tuesday++ 
+        usr.schedule?.wednesday==="true" && dayCount.Wednesday++
+        usr.schedule?.thursday==="true" && dayCount.Thursday++
+        usr.schedule?.friday==="true" && dayCount.Friday++
       });
 
 
@@ -112,7 +114,7 @@ export default class TeamMeetingDayAdaptiveCardExtension extends BaseAdaptiveCar
       let countNumber =  Math.max(  ...Object.values(dayCount) )
     
 
-     Object.keys(dayCount).filter( (val:string) => dayCount[val] === countNumber).forEach( (val)=>dayName+=` ${val}`)
+     Object.keys(dayCount).filter( (day:string) => dayCount[day] === countNumber).forEach( (day)=>dayName+=` ${day}`)
 
      this.setState( {        
       ...this.state,

@@ -15,6 +15,8 @@ declare interface ITeamMeetingDayAdaptiveCardExtensionStrings {
   YourTeam:string;
   PeoplesGoing:string;
   PopularDays:string;
+  NoColleague:string; 
+  ErrSetUpContact:string;
 
 }
 

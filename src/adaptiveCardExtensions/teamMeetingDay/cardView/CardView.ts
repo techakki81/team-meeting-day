@@ -36,8 +36,9 @@ export class CardView extends BasePrimaryTextCardView<ITeamMeetingDayAdaptiveCar
 
   public get data(): IPrimaryTextCardParameters {
 
-    const primaryText = this.state.user.team?.length>0 ?this.state.popularDay:strings.NoColleague;
-    const desc = this.state.user.team?.length>0?  `${this.state.pupularDayCount} ${strings.PeoplesGoing}`;
+    const primaryText = this.state.user?.team?.length>0 ?this.state.popularDay:strings.NoColleague;
+    const desc = this.state.user?.team?.length>0?
+     `${this.state.pupularDayCount} ${strings.PeoplesGoing}`:strings.ErrSetUpContact;
 
     return {
       primaryText: primaryText ,
