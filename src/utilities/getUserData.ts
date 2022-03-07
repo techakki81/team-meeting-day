@@ -9,6 +9,7 @@ import "@pnp/sp/lists"
 import "@pnp/sp/items"
 import {ICamlQuery, IList} from "@pnp/sp/lists"
 import { weekNumber } from './weekNumber';
+import { UserCustomAction } from '@pnp/sp/user-custom-actions/types';
 
 export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spList:IList): Promise<IUser[]> {
 
@@ -42,7 +43,8 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
                 // TOTALK.. TYpescript
                 let response = await client.api("/me/contacts").get() 
                 let users = await response.value.map( async(val:any) =>{
-                    let sch:any = await getUserSchedule(val.emailAddresses[0].address,spList)
+
+                    let sch:any = await getUserSchedule(val.emailAddresses[0]?.address,spList)
                     return <IUser>{
                         displayName: val.displayName,
                         email:val.emailAddresses[0].address,
@@ -56,6 +58,9 @@ export  async function getUserTeamData(context:AdaptiveCardExtensionContext,spLi
 
   export async function getUserSchedule( usrEmail:string,  spList:IList, date?:Date):Promise<ISchedule> {   
 
+    if( !usrEmail)
+        return null
+        
     let weekNo:number =  weekNumber( date || new Date())
 
         const qry:ICamlQuery = {
